@@ -16,12 +16,29 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
+        
         - name: "update apt-get"
           run: sudo apt-get update -y
         - name: "install dependecies"
-          run: sudo apt-get install -y cmake build-essential
+          run: sudo apt-get install -y cmake build-essential git
         - name: "install further dependencies"
           run: sudo apt-get install -y libboost-test-dev libeigen3-dev
+          
+        - name: "make folder for yaml"
+          run: mkdir yaml
+        - name: "git clone yaml"
+          working-directory: ./yaml
+          run: git clone https://github.com/jbeder/yaml-cpp.git
+        - name: "make build dir for yaml"
+          working-directory: ./yaml/yaml-cpp
+          run: mkdir build 
+        - name: "install yaml"
+          working-directory: ./yaml/yaml-cpp/build
+          run: |
+            cmake ..
+            make -j
+            sudo make install
+          
         - name: "create build directory"
           run: mkdir build
         - name: "cmake"
@@ -35,12 +52,29 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
+          
         - name: "update apt-get"
           run: sudo apt-get update -y
         - name: "install dependecies"
-          run: sudo apt-get install -y cmake build-essential
+          run: sudo apt-get install -y cmake build-essential git
         - name: "install further dependencies"
           run: sudo apt-get install -y libboost-test-dev libeigen3-dev
+          
+        - name: "make folder for yaml"
+          run: mkdir yaml
+        - name: "git clone yaml"
+          working-directory: ./yaml
+          run: git clone https://github.com/jbeder/yaml-cpp.git
+        - name: "make build dir for yaml"
+          working-directory: ./yaml/yaml-cpp
+          run: mkdir build 
+        - name: "install yaml"
+          working-directory: ./yaml/yaml-cpp/build
+          run: |
+            cmake ..
+            make -j
+            sudo make install
+            
         - name: "create build directory"
           run: mkdir build
         - name: "cmake"
