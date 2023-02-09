@@ -19,6 +19,13 @@ Configuration::Configuration(const std::string yamlFile)
         decompositionString + "\".");
   }
 
+
+
+
+
+
+
+  
   matrixFileName = config["MatrixFileName"].as<std::string>();
   matrixSize     = config["MatrixSize"].as<int>();
 
