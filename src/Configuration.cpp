@@ -18,14 +18,7 @@ Configuration::Configuration(const std::string yamlFile)
         "SIDEMADE does not support the decomposition type \"" +
         decompositionString + "\".");
   }
-
-
-
-
-
-
-
-  
+ 
   matrixFileName = config["MatrixFileName"].as<std::string>();
   matrixSize     = config["MatrixSize"].as<int>();
 
