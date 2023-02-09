@@ -11,8 +11,8 @@ jobs:
         run: apt-get update -y && apt-get install -y clang-format
       - name: "run style check"
         run: clang-format -Werror src/*
-
-    build:
+  
+  build:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
         - name: "make"
           run: make -j
 
-    test:
+  test:
       needs: build
       runs-on: ubuntu-latest
       steps:
