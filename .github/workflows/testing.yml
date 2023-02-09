@@ -37,7 +37,7 @@ jobs:
         - name: "install further dependencies"
           run: sudo apt-get install libboost-test-dev libeigen3-dev
         - name: "create build directory"
-          run: mkdir build && cd build
+          run: cd testing-boost-exercise && mkdir build && cd build
         - name: "cmake"
           run: cmake ..
         - name: "make"
