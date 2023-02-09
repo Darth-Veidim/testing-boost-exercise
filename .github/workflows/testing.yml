@@ -16,14 +16,12 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
-        - name: "tell me where i am"
-          run: ls -l & sudo apt-get install asdfasdfasdf
         - name: "install dependecies"
           run: sudo apt-get update -y && sudo apt-get install -y cmake build-essential
         - name: "install further dependencies"
           run: sudo apt-get install libboost-test-dev libeigen3-dev
         - name: "create build directory"
-          run: cd testing-boost-exercise && mkdir build && cd build
+          run: mkdir build && cd build && ls -l && cd .. && ls -l
         - name: "cmake"
           run: cmake ..
         - name: "make"
