@@ -20,9 +20,9 @@ jobs:
         - name: "update apt-get"
           run: sudo apt-get update -y
         - name: "install dependecies"
-          run: sudo apt-get install -y cmake build-essential git
-        - name: "install further dependencies"
-          run: sudo apt-get install -y libboost-test-dev libeigen3-dev
+          run: |
+            sudo apt-get install -y cmake build-essential git
+            sudo apt-get install -y libboost-test-dev libeigen3-dev
           
         - name: "make folder for yaml"
           run: mkdir yaml
@@ -41,13 +41,12 @@ jobs:
           
         - name: "create build directory"
           run: mkdir build
-        - name: "cmake"
+        - name: "build"
           working-directory: ./build
-          run: cmake ..
-        - name: "make"
-          working-directory: ./build
-          run: make -j
-
+          run: |
+            cmake ..
+            make -j
+            
   test:
       needs: build
       runs-on: ubuntu-latest
@@ -57,9 +56,9 @@ jobs:
         - name: "update apt-get"
           run: sudo apt-get update -y
         - name: "install dependecies"
-          run: sudo apt-get install -y cmake build-essential git
-        - name: "install further dependencies"
-          run: sudo apt-get install -y libboost-test-dev libeigen3-dev
+          run: |
+            sudo apt-get install -y cmake build-essential git
+            sudo apt-get install -y libboost-test-dev libeigen3-dev
           
         - name: "make folder for yaml"
           run: mkdir yaml
@@ -78,10 +77,12 @@ jobs:
 
         - name: "create build directory"
           run: mkdir build
-        - name: "cmake"
+        - name: "build"
           working-directory: ./build
-          run: cmake ..
-        - name: "make"
+          run: |
+            cmake ..
+            make -j
+        - name: "run tests"
           working-directory: ./build
-          run: make -j
+          run: make test
 
