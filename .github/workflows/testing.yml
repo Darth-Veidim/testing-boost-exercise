@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "install clang-format"
-        run: apt-get update -y && apt-get install -y clang-format
+        run: sudo apt-get update -y && sudo apt-get install -y clang-format
       - name: "run style check"
         run: clang-format -Werror src/*
   
